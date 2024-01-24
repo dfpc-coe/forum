@@ -5,6 +5,7 @@ import {
 
 import DB from './lib/db.js';
 import KMS from './lib/kms.js';
+import Alarms from './lib/alarms.js';
 
 export default cf.merge(
     DB, KMS,
