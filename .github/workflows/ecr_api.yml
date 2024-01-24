@@ -25,7 +25,7 @@ jobs:
           ref: ${{github.event.pull_request.head.sha || github.sha}}
 
       - name: Docker Build API
-        run: docker-compose build api
+        run: docker compose build forum
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
