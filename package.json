@@ -1,0 +1,33 @@
+{
+    "name": "@tak-ps/forum",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "Provide a forum for TAK authenticated users",
+    "scripts": {
+        "lint": "eslint cloudformation/*.js cloudformation/lib/*.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "engines": {
+        "node": ">= 18"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tak-ps/forum.git"
+    },
+    "author": "Nick Ingalls <nick@ingalls.ca>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tak-ps/forum/issues"
+    },
+    "homepage": "https://github.com/tak-ps/forum#readme",
+    "dependencies": {
+        "@openaddresses/batch-alarms": "^4.0.0",
+        "@openaddresses/cloudfriend": "^7.0.0",
+        "@openaddresses/deploy": "^8.0.0"
+    },
+    "devDependencies": {
+        "@types/xml2js": "^0.4.11",
+        "eslint": "^8.9.0",
+        "eslint-plugin-node": "^11.1.0"
+    }
+}
