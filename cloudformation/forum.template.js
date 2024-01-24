@@ -8,7 +8,7 @@ import KMS from './lib/kms.js';
 import Alarms from './lib/alarms.js';
 
 export default cf.merge(
-    DB, KMS,
+    DB, KMS, Alarms,
     {
         Description: 'Template for @tak-ps/forum',
         Parameters: {
