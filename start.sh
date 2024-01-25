@@ -1,6 +1,6 @@
 while true
 do
-    ./nodebb start || true
+    ./nodebb start --config=${CONFIG_DIR}/config.json || true
     echo "Restart Script"
     ls
     ls ./install/

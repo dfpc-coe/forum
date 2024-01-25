@@ -5,11 +5,12 @@ import {
 
 import DB from './lib/db.js';
 import KMS from './lib/kms.js';
+import EFS from './lib/efs.js';
 import API from './lib/api.js';
 import Alarms from './lib/alarms.js';
 
 export default cf.merge(
-    DB, KMS, API, Alarms,
+    DB, KMS, API, EFS, Alarms,
     {
         Description: 'Template for @tak-ps/forum',
         Parameters: {
