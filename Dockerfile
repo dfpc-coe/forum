@@ -14,16 +14,19 @@ RUN apt-get update \
 RUN export NODEV='20.11.0' \
     && curl "https://nodejs.org/dist/v${NODEV}/node-v${NODEV}-linux-x64.tar.gz" | tar -xzv \
     && cp ./node-v${NODEV}-linux-x64/bin/node /usr/bin/ \
-    && ./node-v${NODEV}-linux-x64/bin/npm install -g npm 
+    && ./node-v${NODEV}-linux-x64/bin/npm install -g npm
 
 
 RUN curl -L https://github.com/NodeBB/NodeBB/archive/refs/tags/v${VERSION}.tar.gz > /tmp/nodebb.tar.gz \
     && tar -xf /tmp/nodebb.tar.gz -C $HOME
 
+COPY . $HOME
+
 WORKDIR $HOME/NodeBB-${VERSION}
 
 RUN cp ./install/package* . \
-    && npm install
+    && npm install \
+    && cp $HOME/patches/connection.js ./src/database/postgres/connection.js
 
 ENV NODE_ENV=production \
     CONFIG_DIR='./install' \

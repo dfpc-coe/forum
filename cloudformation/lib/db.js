@@ -98,10 +98,10 @@ export default {
             Properties: {
                 GroupDescription: cf.join('-', [cf.stackName, 'rds-sg']),
                 VpcId: cf.importValue(cf.join(['coe-vpc-', cf.ref('Environment'), '-vpc'])),
-                SecurityGroupIngress: [/*{
+                SecurityGroupIngress: [{
                     IpProtocol: '-1',
                     SourceSecurityGroupId: cf.getAtt('ServiceSecurityGroup', 'GroupId')
-                },*/{
+                },{
                     IpProtocol: '-1',
                     CidrIp: '0.0.0.0/0'
                 }]

@@ -5,10 +5,11 @@ import {
 
 import DB from './lib/db.js';
 import KMS from './lib/kms.js';
+import API from './lib/api.js';
 import Alarms from './lib/alarms.js';
 
 export default cf.merge(
-    DB, KMS, Alarms,
+    DB, KMS, API, Alarms,
     {
         Description: 'Template for @tak-ps/forum',
         Parameters: {
@@ -21,6 +22,10 @@ export default cf.merge(
                 Type: 'String',
                 Default: 'prod'
             },
+            SSLCertificateIdentifier: {
+                Description: 'ACM SSL Certificate for HTTP Protocol',
+                Type: 'String'
+            }
         }
     },
     /*
