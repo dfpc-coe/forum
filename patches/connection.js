@@ -27,9 +27,9 @@ connection.getConnectionOptions = function (postgres) {
                 user: postgres.username,
                 password: postgres.password,
                 database: postgres.database,
-                ssl: {
+                ssl: String(postgres.ssl) === 'true' ? {
                     rejectUnauthorized: false,
-                },
+                } : false,
                 max: 20,
                 connectionTimeoutMillis: 90000,
         };
