@@ -3,9 +3,11 @@ mkdir -p $HOME/config/
 while true
 do
     if test -f ${CONFIG_DIR}/config.json; then
+        echo "Found Config File"
         ./nodebb build --config=${CONFIG_DIR}/config.json || true
         ./nodebb start --config=${CONFIG_DIR}/config.json || true
     else
+        echo "No Config File"
         ./nodebb start || true
 
         echo "copying config"
