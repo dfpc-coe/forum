@@ -5,7 +5,7 @@ export default {
         EFSFileSystem: {
             Type: 'AWS::EFS::FileSystem',
             Properties: {
-                Enrypted: true,
+                Encrypted: true,
                 KmsKeyId: cf.ref('KMS'),
                 FileSystemTags: [{
                     Key: 'Name',
