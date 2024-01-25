@@ -35,4 +35,4 @@ ENV NODE_ENV=production \
     daemon=false \
     silent=false
 
-CMD ["./start.sh"]
+CMD ["bash", "./start.sh"]
