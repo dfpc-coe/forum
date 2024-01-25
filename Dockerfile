@@ -30,7 +30,7 @@ RUN cp ./install/package* . \
     && cp $HOME/start.sh ./
 
 ENV NODE_ENV=production \
-    CONFIG_DIR='$HOME/config' \
+    CONFIG_DIR=$HOME/config \
     NODEBB_INIT_VERB=install \
     daemon=false \
     silent=false

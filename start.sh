@@ -6,6 +6,8 @@ do
         ./nodebb start --config=${CONFIG_DIR}/config.json || true
     else
         ./nodebb start || true
+
+        echo "copying config"
         mv $HOME/NodeBB-${VERSION}/config.json ${CONFIG_DIR}/config.json
     fi
 
