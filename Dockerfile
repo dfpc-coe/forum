@@ -26,7 +26,8 @@ WORKDIR $HOME/NodeBB-${VERSION}
 
 RUN cp ./install/package* . \
     && npm install \
-    && cp $HOME/patches/connection.js ./src/database/postgres/connection.js
+    && cp $HOME/patches/connection.js ./src/database/postgres/connection.js \
+    && cp $HOME/start.sh ./
 
 ENV NODE_ENV=production \
     CONFIG_DIR='./install' \
@@ -34,6 +35,4 @@ ENV NODE_ENV=production \
     daemon=false \
     silent=false
 
-CMD ./nodebb start
-
-
+CMD ["./start.sh"]
