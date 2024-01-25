@@ -7,6 +7,6 @@ do
     fi
 
     echo "Restart Script"
-    ls
-    ls ./install/
+    ls ${CONFIG_DIR}/
+    cat ${CONFIG_DIR}/config.json
 done
