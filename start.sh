@@ -3,6 +3,7 @@ mkdir -p $HOME/config/
 while true
 do
     if test -f ${CONFIG_DIR}/config.json; then
+        ./nodebb build --config=${CONFIG_DIR}/config.json || true
         ./nodebb start --config=${CONFIG_DIR}/config.json || true
     else
         ./nodebb start || true
