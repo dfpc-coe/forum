@@ -1,4 +1,7 @@
 mkdir -p $HOME/config/
+mkdir -p $HOME/config/public/
+
+ln -s ${CONFIG_DIR}/public/  ./.docker/public/uploads
 
 while true
 do
