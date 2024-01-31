@@ -16,7 +16,7 @@ do
         cat "${CONFIG_DIR}/config.json"
 
         if [[ -n "$CF_HOSTED_URL" ]]; then
-            jq ".url=\"${CF_HOSTED_URL}\"" ./config.json | sponge ./config.json
+            jq ".url=\"${CF_HOSTED_URL}\"" ${CONFIG_DIR}/config.json | sponge ${CONFIG_DIR}/config.json
         fi
 
         ./nodebb build --config="${CONFIG_DIR}/config.json" || true
