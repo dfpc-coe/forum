@@ -1,7 +1,9 @@
+#! /bin/bash
+
 mkdir -p $HOME/config/
 mkdir -p $HOME/config/public/
 
-ln -s ${CONFIG_DIR}/public/  ./.docker/public/uploads
+ln -s ${CONFIG_DIR}/public/ ./.docker/public/uploads
 
 while true
 do
@@ -10,9 +12,9 @@ do
 
         jq . ${CONFIG_DIR}/config.json
 
-        if [[ ! -z "$CF_HOSTED_URL" ]];
+        if [[ ! -z "$CF_HOSTED_URL" ]]; then
             jq ".url=\"${CF_HOSTED_URL}\"" ./config.json | sponge ./config.json
-        then
+        fi
 
         ./nodebb build --config=${CONFIG_DIR}/config.json || true
         ./nodebb start --config=${CONFIG_DIR}/config.json || true
