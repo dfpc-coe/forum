@@ -7,6 +7,13 @@ while true
 do
     if test -f ${CONFIG_DIR}/config.json; then
         echo "Found Config File"
+
+        jq . ${CONFIG_DIR}/config.json
+
+        if [[ ! -z "$CF_HOSTED_URL" ]];
+            jq ".url=\"${CF_HOSTED_URL}\"" ./config.json | sponge ./config.json
+        then
+
         ./nodebb build --config=${CONFIG_DIR}/config.json || true
         ./nodebb start --config=${CONFIG_DIR}/config.json || true
     else

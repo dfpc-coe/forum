@@ -18,6 +18,10 @@ export default cf.merge(
                 Description: 'GitSha that is currently being deployed',
                 Type: 'String'
             },
+            HostedURL: {
+                Description: 'Hosted Domain of the instance',
+                Type: 'String'
+            },
             Environment: {
                 Description: 'VPC/ECS Stack to deploy into',
                 Type: 'String',

@@ -9,7 +9,7 @@ WORKDIR $HOME
 WORKDIR $HOME
 
 RUN apt-get update \
-    && apt-get install -y curl vim python3
+    && apt-get install -y curl vim python3 moreutils
 
 RUN export NODEV='20.11.0' \
     && curl "https://nodejs.org/dist/v${NODEV}/node-v${NODEV}-linux-x64.tar.gz" | tar -xzv \

@@ -180,6 +180,7 @@ export default {
                                 ':5432/tak_ps_forum'
                             ])
                         },
+                        { Name: 'CF_HOSTED_URL', Value: cf.ref('HostedURL') },
                         { Name: 'StackName', Value: cf.stackName },
                         { Name: 'AWS_DEFAULT_REGION', Value: cf.region }
                     ],
