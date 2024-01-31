@@ -3,12 +3,17 @@
 mkdir -p "$HOME/config/"
 mkdir -p "$HOME/config/public/"
 
-ln -s "${CONFIG_DIR}/public/" "./.docker/public/uploads"
+#ln -s "${CONFIG_DIR}/public/" "./.docker/public/uploads"
 
 while true
 do
     if test -f "${CONFIG_DIR}/config.json"; then
         echo "Found Config File"
+
+        echo "CONFIG_DIR Contents:"
+        ls "${CONFIG_DIR}/"
+        echo "CONFIG:"
+        cat "${CONFIG_DIR}/config.json"
 
         if [[ -n "$CF_HOSTED_URL" ]]; then
             jq ".url=\"${CF_HOSTED_URL}\"" ./config.json | sponge ./config.json
@@ -25,6 +30,4 @@ do
     fi
 
     echo "Restart Script"
-    ls "${CONFIG_DIR}/"
-    cat "${CONFIG_DIR}/config.json"
 done
