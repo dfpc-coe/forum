@@ -1,32 +1,30 @@
 #! /bin/bash
 
-mkdir -p $HOME/config/
-mkdir -p $HOME/config/public/
+mkdir -p "$HOME/config/"
+mkdir -p "$HOME/config/public/"
 
-ln -s ${CONFIG_DIR}/public/ ./.docker/public/uploads
+ln -s "${CONFIG_DIR}/public/" "./.docker/public/uploads"
 
 while true
 do
-    if test -f ${CONFIG_DIR}/config.json; then
+    if test -f "${CONFIG_DIR}/config.json"; then
         echo "Found Config File"
 
-        jq . ${CONFIG_DIR}/config.json
-
-        if [[ ! -z "$CF_HOSTED_URL" ]]; then
+        if [[ -n "$CF_HOSTED_URL" ]]; then
             jq ".url=\"${CF_HOSTED_URL}\"" ./config.json | sponge ./config.json
         fi
 
-        ./nodebb build --config=${CONFIG_DIR}/config.json || true
-        ./nodebb start --config=${CONFIG_DIR}/config.json || true
+        ./nodebb build --config="${CONFIG_DIR}/config.json" || true
+        ./nodebb start --config="${CONFIG_DIR}/config.json" || true
     else
         echo "No Config File"
         ./nodebb start || true
 
         echo "copying config"
-        mv $HOME/NodeBB-${VERSION}/config.json ${CONFIG_DIR}/config.json
+        mv "$HOME/NodeBB-${VERSION}/config.json" "${CONFIG_DIR}/config.json"
     fi
 
     echo "Restart Script"
-    ls ${CONFIG_DIR}/
-    cat ${CONFIG_DIR}/config.json
+    ls "${CONFIG_DIR}/"
+    cat "${CONFIG_DIR}/config.json"
 done
