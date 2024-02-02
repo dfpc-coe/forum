@@ -7,7 +7,8 @@
             "Key": "Project",
             "Value": "coe-forum"
         },
-        "Owner"
+        "Owner",
+        "Client"
     ],
     "artifacts": {
         "docker": [
