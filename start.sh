@@ -21,6 +21,7 @@ do
 
         ./nodebb build --config="${CONFIG_DIR}/config.json" || true
         ./nodebb upgrade --config="${CONFIG_DIR}/config.json" || true
+        ./nodebb stop --config="${CONFIG_DIR}/config.json"
         ./nodebb start --config="${CONFIG_DIR}/config.json" || true
     else
         echo "No Config File"
