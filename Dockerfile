@@ -26,7 +26,7 @@ WORKDIR $HOME/NodeBB-${VERSION}
 
 RUN cp ./install/package* . \
     && npm install \
-    && npm install --save nodebb-plugin-sso-oauth2-multiple \
+    && npm install --save nodebb-plugin-sso-oauth2-multiple nodebb-plugin-poll \
     && cp $HOME/patches/connection.js ./src/database/postgres/connection.js \
     && cp $HOME/start.sh ./
 
