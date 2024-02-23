@@ -1,9 +1,20 @@
 #! /bin/bash
 
-mkdir -p "$HOME/config/"
-mkdir -p "$HOME/config/public/"
+set -eo pipefail
 
-#ln -s "${CONFIG_DIR}/public/" "./.docker/public/uploads"
+mkdir -p "${CONFIG_DIR}"
+mkdir -p "${CONFIG_DIR}/uploads/"
+
+echo "Symlinking $HOME/NodeBB-${VERSION}/public/uploads"
+UPLOADS="$HOME/NodeBB-${VERSION}/public/uploads"
+
+if [[ -L "$UPLOADS" && -d "$UPLOADS" ]]; then
+    echo "Symlink already configured"
+else
+    cp -r "$HOME/NodeBB-${VERSION}/public/uploads" "${CONFIG_DIR}/uploads/"
+    rm -rf "$HOME/NodeBB-${VERSION}/public/uploads"
+    ln -s "${CONFIG_DIR}/uploads/" "$HOME/NodeBB-${VERSION}/public/uploads"
+fi
 
 while true
 do
