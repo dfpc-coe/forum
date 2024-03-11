@@ -61,6 +61,7 @@ export default {
                 Engine: 'postgres',
                 AllowMajorVersionUpgrade: false,
                 DBName: 'tak_ps_forum',
+                CopyTagsToSnapshot: true,
                 DBInstanceIdentifier: cf.stackName,
                 MonitoringInterval: 60,
                 MonitoringRoleArn: cf.getAtt('DBMonitoringRole', 'Arn'),
