@@ -1,5 +1,6 @@
 import cf from '@openaddresses/cloudfriend';
 import {
+    ELB as ELBAlarms,
     RDS as RDSAlarms
 } from '@openaddresses/batch-alarms';
 
@@ -33,9 +34,8 @@ export default cf.merge(
             }
         }
     },
-    /*
     ELBAlarms({
-        prefix: 'BatchELB',
+        prefix: 'ELBAlarm',
         topic: cf.ref('AlarmTopic'),
         apache: cf.stackName,
         cluster: cf.join(['coe-ecs-', cf.ref('Environment')]),
@@ -44,9 +44,8 @@ export default cf.merge(
         targetgroup: cf.getAtt('TargetGroup', 'TargetGroupFullName')
 
     }),
-    */
     RDSAlarms({
-        prefix: 'Batch',
+        prefix: 'RDSAlarm',
         topic: cf.ref('AlarmTopic'),
         instance: cf.ref('DBInstance')
 
