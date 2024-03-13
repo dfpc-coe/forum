@@ -33,6 +33,10 @@ export default {
         EFSSecurityGroup: {
             Type: 'AWS::EC2::SecurityGroup',
             Properties: {
+                Tags: [{
+                    Key: 'Name',
+                    Value: cf.join('-', [cf.stackName, 'vpc'])
+                }],
                 VpcId: cf.importValue(cf.join(['coe-vpc-', cf.ref('Environment'), '-vpc'])),
                 GroupDescription: 'Allow EFS Access in Forum Task',
                 SecurityGroupIngress: [{

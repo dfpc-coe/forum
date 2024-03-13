@@ -25,6 +25,10 @@ export default {
         ELBSecurityGroup: {
             Type : 'AWS::EC2::SecurityGroup',
             Properties : {
+                Tags: [{
+                    Key: 'Name',
+                    Value: cf.join('-', [cf.stackName, 'elb-sg'])
+                }],
                 GroupDescription: cf.join('-', [cf.stackName, 'elb-sg']),
                 SecurityGroupIngress: [{
                     CidrIp: '0.0.0.0/0',
@@ -226,6 +230,10 @@ export default {
         ServiceSecurityGroup: {
             Type: 'AWS::EC2::SecurityGroup',
             Properties: {
+                Tags: [{
+                    Key: 'Name',
+                    Value: cf.join('-', [cf.stackName, 'ec2-sg'])
+                }],
                 GroupDescription: cf.join('-', [cf.stackName, 'ec2-sg']),
                 VpcId: cf.importValue(cf.join(['coe-vpc-', cf.ref('Environment'), '-vpc'])),
                 SecurityGroupIngress: [{
