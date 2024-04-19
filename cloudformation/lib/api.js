@@ -204,6 +204,7 @@ export default {
         Service: {
             Type: 'AWS::ECS::Service',
             Properties: {
+                PropagateTags: 'SERVICE',
                 ServiceName: cf.join('-', [cf.stackName, 'Service']),
                 Cluster: cf.join(['coe-ecs-', cf.ref('Environment')]),
                 TaskDefinition: cf.ref('TaskDefinition'),
