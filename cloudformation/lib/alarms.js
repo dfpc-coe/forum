@@ -7,6 +7,6 @@ export default {
             Properties: {
                 TopicName: cf.stackName
             }
-        },
+        }
     }
 };

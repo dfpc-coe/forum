@@ -271,6 +271,6 @@ export default {
         API: {
             Description: 'API ELB',
             Value: cf.join(['http://', cf.getAtt('ELB', 'DNSName')])
-        },
+        }
     }
 };
