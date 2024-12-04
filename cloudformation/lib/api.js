@@ -238,7 +238,8 @@ export default {
                 GroupDescription: cf.join('-', [cf.stackName, 'ec2-sg']),
                 VpcId: cf.importValue(cf.join(['coe-vpc-', cf.ref('Environment'), '-vpc'])),
                 SecurityGroupIngress: [{
-                    CidrIp: '0.0.0.0/0',
+                    Description: 'ELB Traffic',
+                    SourceSecurityGroupId: cf.ref('ELBSecurityGroup'),
                     IpProtocol: 'tcp',
                     FromPort: 4567,
                     ToPort: 4567
