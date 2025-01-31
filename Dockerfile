@@ -11,7 +11,7 @@ WORKDIR $HOME
 RUN apt-get update \
     && apt-get install -y curl vim python3 moreutils jq
 
-RUN export NODEV='20.11.1' \
+RUN export NODEV='22.13.1' \
     && curl "https://nodejs.org/dist/v${NODEV}/node-v${NODEV}-linux-x64.tar.gz" | tar -xzv \
     && cp ./node-v${NODEV}-linux-x64/bin/node /usr/bin/ \
     && ./node-v${NODEV}-linux-x64/bin/npm install -g npm
