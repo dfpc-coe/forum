@@ -100,11 +100,10 @@ export default {
                 GroupDescription: cf.join('-', [cf.stackName, 'rds-sg']),
                 VpcId: cf.importValue(cf.join(['coe-vpc-', cf.ref('Environment'), '-vpc'])),
                 SecurityGroupIngress: [{
-                    IpProtocol: '-1',
+                    IpProtocol: 'TCP',
+                    FromPort: 5432,
+                    ToPort: 5432,
                     SourceSecurityGroupId: cf.getAtt('ServiceSecurityGroup', 'GroupId')
-                },{
-                    IpProtocol: '-1',
-                    CidrIp: '0.0.0.0/0'
                 }]
             }
         }
