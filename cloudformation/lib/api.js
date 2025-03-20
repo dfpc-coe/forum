@@ -103,8 +103,7 @@ export default {
                         },
                         Action: 'sts:AssumeRole'
                     }]
-                },
-                Policies: []
+                }
             }
         },
         ExecRole: {
@@ -261,7 +260,6 @@ export default {
                     }]
                 },
                 Path: '/',
-                Policies: [],
                 ManagedPolicyArns: [
                     cf.join(['arn:', cf.partition, ':iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'])
                 ]
