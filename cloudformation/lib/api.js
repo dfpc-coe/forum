@@ -205,7 +205,7 @@ export default {
             Properties: {
                 PropagateTags: 'SERVICE',
                 ServiceName: cf.join('-', [cf.stackName, 'Service']),
-                Cluster: cf.join(['tak-ecs-', cf.ref('Environment')]),
+                Cluster: cf.join(['tak-vpc-', cf.ref('Environment')]),
                 TaskDefinition: cf.ref('TaskDefinition'),
                 LaunchType: 'FARGATE',
                 HealthCheckGracePeriodSeconds: 300,
