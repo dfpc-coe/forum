@@ -2,6 +2,20 @@ import cf from '@openaddresses/cloudfriend';
 
 export default {
     Resources: {
+        ELBDNS: {
+            Type: 'AWS::Route53::RecordSet',
+            Properties: {
+                HostedZoneId: cf.importValue(cf.join(['tak-vpc-', cf.ref('Environment'), '-hosted-zone-id'])),
+                Type : 'A',
+                Name: cf.join([cf.ref('SubdomainPrefix'), '.', cf.importValue(cf.join(['tak-vpc-', cf.ref('Environment'), '-hosted-zone-name']))]),
+                Comment: cf.join(' ', [cf.stackName, 'DNS Entry']),
+                AliasTarget: {
+                    DNSName: cf.getAtt('ELB', 'DNSName'),
+                    EvaluateTargetHealth: true,
+                    HostedZoneId: cf.getAtt('ELB', 'CanonicalHostedZoneID')
+                }
+            }
+        },
         Logs: {
             Type: 'AWS::Logs::LogGroup',
             Properties: {
@@ -103,7 +117,22 @@ export default {
                         },
                         Action: 'sts:AssumeRole'
                     }]
-                }
+                },
+                Policies: [{
+                    PolicyName: cf.join('-', [cf.stackName, 'api-policy']),
+                    PolicyDocument: {
+                        Statement: [{
+                            Effect: 'Allow',
+                            Action: [
+                                'ssmmessages:CreateControlChannel',
+                                'ssmmessages:CreateDataChannel',
+                                'ssmmessages:OpenControlChannel',
+                                'ssmmessages:OpenDataChannel'
+                            ],
+                            Resource: '*'
+                        }]
+                    }
+                }]
             }
         },
         ExecRole: {
@@ -183,7 +212,7 @@ export default {
                                 ':5432/tak_ps_forum'
                             ])
                         },
-                        { Name: 'CF_HOSTED_URL', Value: cf.ref('HostedURL') },
+                        { Name: 'CF_HOSTED_URL', Value: cf.join(['https://', cf.ref('SubdomainPrefix'), '.', cf.importValue(cf.join(['tak-vpc-', cf.ref('Environment'), '-hosted-zone-name']))]) },
                         { Name: 'StackName', Value: cf.stackName },
                         { Name: 'AWS_DEFAULT_REGION', Value: cf.region }
                     ],
@@ -208,6 +237,7 @@ export default {
                 Cluster: cf.join(['tak-vpc-', cf.ref('Environment')]),
                 TaskDefinition: cf.ref('TaskDefinition'),
                 LaunchType: 'FARGATE',
+                EnableExecuteCommand: cf.ref('EnableExecute'),
                 HealthCheckGracePeriodSeconds: 300,
                 DesiredCount: 1,
                 NetworkConfiguration: {
