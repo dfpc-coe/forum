@@ -19,14 +19,21 @@ export default cf.merge(
                 Description: 'GitSha that is currently being deployed',
                 Type: 'String'
             },
-            HostedURL: {
-                Description: 'Hosted Domain of the instance',
-                Type: 'String'
+            SubdomainPrefix: {
+                Description: 'Subdomain prefix of the instance',
+                Type: 'String',
+                Default: 'forum'
             },
             Environment: {
                 Description: 'VPC/ECS Stack to deploy into',
                 Type: 'String',
                 Default: 'prod'
+            },
+            EnableExecute: {
+                Description: 'Allow SSH into docker container - should only be enabled for limited debugging',
+                Type: 'String',
+                AllowedValues: ['true', 'false'],
+                Default: 'false'
             },
             SSLCertificateIdentifier: {
                 Description: 'ACM SSL Certificate for HTTP Protocol',
