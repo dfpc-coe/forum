@@ -1,8 +1,8 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 EXPOSE 4567
 
-ENV VERSION=4.5.1
+ENV VERSION=4.8.1
 ENV HOME=/home/forum
 WORKDIR $HOME
 
