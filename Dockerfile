@@ -1,8 +1,8 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 EXPOSE 4567
 
-ENV VERSION=4.5.1
+ENV VERSION=4.8.1
 ENV HOME=/home/forum
 WORKDIR $HOME
 
@@ -11,7 +11,7 @@ WORKDIR $HOME
 RUN apt-get update \
     && apt-get install -y curl vim python3 moreutils jq
 
-RUN export NODEV='22.13.1' \
+RUN export NODEV='24.13.1' \
     && curl "https://nodejs.org/dist/v${NODEV}/node-v${NODEV}-linux-x64.tar.gz" | tar -xzv \
     && cp ./node-v${NODEV}-linux-x64/bin/node /usr/bin/ \
     && ./node-v${NODEV}-linux-x64/bin/npm install -g npm
