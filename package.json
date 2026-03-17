@@ -26,8 +26,9 @@
         "@openaddresses/deploy": "^9.0.0"
     },
     "devDependencies": {
+        "@eslint/js": "^10.0.1",
         "@types/xml2js": "^0.4.11",
-        "eslint": "^9.9.0",
+        "eslint": "^10.0.0",
         "eslint-plugin-n": "^17.2.1"
     }
 }
