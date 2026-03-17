@@ -31,7 +31,7 @@ do
         fi
 
         ./nodebb build --config="${CONFIG_DIR}/config.json" || true
-        ./nodebb upgrade --config="${CONFIG_DIR}/config.json" || true
+        ./nodebb upgrade --config="${CONFIG_DIR}/config.json" --schema --unattended || true
         ./nodebb stop --config="${CONFIG_DIR}/config.json"
         ./nodebb start --config="${CONFIG_DIR}/config.json" || true
     else
