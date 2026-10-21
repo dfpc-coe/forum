@@ -21,14 +21,14 @@
     },
     "homepage": "https://github.com/tak-ps/forum#readme",
     "dependencies": {
-        "@openaddresses/batch-alarms": "^4.0.0",
+        "@openaddresses/batch-alarms": "^5.0.4",
         "@openaddresses/cloudfriend": "^7.0.0",
-        "@openaddresses/deploy": "^9.0.0"
+        "@openaddresses/deploy": "^10.5.0"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
         "@types/xml2js": "^0.4.11",
-        "eslint": "^10.0.0",
-        "eslint-plugin-n": "^17.2.1"
+        "eslint": "^10.13.0",
+        "eslint-plugin-n": "^18.5.0"
     }
 }

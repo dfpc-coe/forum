@@ -2,16 +2,16 @@ FROM ubuntu:26.04
 
 EXPOSE 4567
 
-ENV VERSION=4.15.0
+ENV VERSION=4.16.3
 ENV HOME=/home/forum
 WORKDIR $HOME
 
 WORKDIR $HOME
 
 RUN apt-get update \
-    && apt-get install -y curl vim python3 moreutils jq
+    && apt-get install -y curl vim python3 moreutils jq libatomic1
 
-RUN export NODEV='24.19.0' \
+RUN export NODEV='26.12.1' \
     && curl "https://nodejs.org/dist/v${NODEV}/node-v${NODEV}-linux-x64.tar.gz" | tar -xzv \
     && cp ./node-v${NODEV}-linux-x64/bin/node /usr/bin/ \
     && ./node-v${NODEV}-linux-x64/bin/npm install -g npm
